@@ -1,7 +1,6 @@
 .header {
   height: 40%;
   text-align: end;
-  color: white;
   background-color: var(--bg-color-1);
   color: var(--bg-color-3);
 }

@@ -72,10 +72,14 @@ function Footer() {
     <div className="footer">
       <div className="keys">
         {keys.map((ele, ind) => {
-          <p key={ind}>{ele.label}</p>;
+          return <p key={ind}>{ele.label}</p>;
         })}
       </div>
-      <div className="symbols"></div>
+      <div className="symbols">
+        {symbols.map((ele, ind) => {
+          return <p key={ind}>{ele.symbols}</p>;
+        })}
+      </div>
     </div>
   );
 }

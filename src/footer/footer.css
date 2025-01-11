@@ -1,4 +1,6 @@
 .footer {
-  height: 70%;
+  height: 60%;
   background-color: var(--bg-color-2);
+  color: var(--bg-color-3);
+  display: flex;
 }
