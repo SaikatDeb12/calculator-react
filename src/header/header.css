@@ -1,4 +1,36 @@
 .header {
-  height: 30%;
+  height: 40%;
+  text-align: end;
+  color: white;
   background-color: var(--bg-color-1);
+  color: var(--bg-color-3);
+}
+
+.history {
+  height: 60%;
+  /* border: 1px solid green; */
+  overflow: auto;
+
+  width: 100%;
+  padding-right: 10px;
+}
+
+.execution {
+  height: 10%;
+  padding-right: 10px;
+  /* overflow: auto; */
+}
+
+.execution {
+  font-weight: 800;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  height: 30%;
+  padding-right: 10px;
+  font-size: x-large;
+  font-weight: 500;
 }
