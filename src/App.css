@@ -1,3 +1,17 @@
+.app {
+  --bg-color-1: #9db3ed;
+  --bg-color-2: #f9f9f9;
+  --bg-color-3: #0b1537;
+  --bg-color-4: #636363;
+}
+
+.app[data-theme="dark"] {
+  --bg-color-1: #172d67;
+  --bg-color-2: #050c26;
+  --bg-color-3: #fbfcfc;
+  --bg-color-4: #bbbcbc;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -49,4 +63,8 @@
 .icon {
   width: 30px;
   height: 30px;
+}
+
+.main-section {
+  height: 100%;
 }
