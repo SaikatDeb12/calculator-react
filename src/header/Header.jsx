@@ -5,28 +5,13 @@ function Header(props) {
   return (
     <div className="header custom-scroll">
       <div className="history ">
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
-        <p>3+4</p>
+        {props.history &&
+          props.history?.map((item) => {
+            return <p key={item + " " + Math.random() * 44}>{item}</p>;
+          })}
       </div>
-      <div className="execution">
+      <div className="execution custom-scroll">
         <p>{props.expression}</p>
-        {/* <p>32+2334+23+123*57678+32+2334+23</p> */}
       </div>
       <div className="result">
         <p>{props.result}</p>

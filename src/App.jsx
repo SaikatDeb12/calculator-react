@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
@@ -9,12 +9,18 @@ const usedCodes = [
 ];
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const operators = ["+", "-", "*", "/"];
+
 function App() {
   const refToggle = useRef();
   const refImg = useRef();
-  const [flag, changeFlag] = useState(true);
+  const [theme, changetheme] = useState(
+    JSON.parse(localStorage.getItem("themeSetting")) || false
+  );
+  const [history, updataHistory] = useState(
+    JSON.parse(localStorage.getItem("calculatorHistory")) || []
+  );
   const changeBtn = () => {
-    if (flag) {
+    if (theme) {
       refToggle.current.style.transform = "translate(25px, 0px)";
       refImg.current.src = "/moon.png";
     } else {
@@ -22,18 +28,31 @@ function App() {
       refImg.current.src = "/sun.png";
     }
 
-    changeFlag(!flag);
+    changetheme(!theme);
   };
+
+  useEffect(() => {
+    localStorage.setItem("themeSetting", JSON.stringify(theme));
+  }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("calculatorHistory", JSON.stringify(history));
+  }, [history]);
+
   const [expression, setExpression] = useState("");
   const [result, setResult] = useState("");
   const [isDecimal, setDecimal] = useState(false);
+
   const handleKeyPress = (keyCode, key) => {
     if (!keyCode) return;
     if (!usedCodes.includes(keyCode)) return;
     if (numbers.includes(key)) {
+      //numbers
       if (key === "0" && expression.length === 0) return;
       setExpression(expression + key);
+      calculate(expression + key);
     } else if (operators.includes(key)) {
+      //operators
       setDecimal(false);
       if (!expression) return;
       const lstOperator = expression.slice(-1);
@@ -42,22 +61,35 @@ function App() {
 
       setExpression(expression + key);
     } else if (keyCode === 190) {
+      //for decimal
       if (!expression) return;
       if (!isDecimal) {
         setExpression(expression + ".");
         setDecimal(true);
       }
     } else if (keyCode === 8) {
+      // backspace
       if (!expression) return;
       else setExpression(expression.slice(0, -1));
+      calculate(expression.slice(0, -1));
     } else if (keyCode === 13) {
+      //result
       //to calculate the result:
-      console.log(expression);
-      if (!expression) return;
       calculate(expression);
+
+      const tempHistory = [...history];
+      // to remove the first element(works as a queue)
+      if (tempHistory.length > 20) tempHistory = tempHistory.slice(0, 1);
+      tempHistory.push(expression); //this
+      updataHistory(tempHistory);
     }
   };
+
   const calculate = (exp) => {
+    if (!exp) {
+      setResult("");
+      return;
+    }
     const lstChar = exp.slice(-1);
     if (!numbers.includes(lstChar)) {
       exp = exp.slice(0, -1);
@@ -72,7 +104,7 @@ function App() {
     <div
       className="app"
       tabIndex={0}
-      data-theme={flag ? "" : "dark"}
+      data-theme={theme ? "" : "dark"}
       onKeyDown={(event) => handleKeyPress(event.keyCode, event.key)}
     >
       <div className="calculator">
@@ -85,7 +117,7 @@ function App() {
           </span>
         </div>
         <div className="main-section">
-          <Header expression={expression} result={result} />
+          <Header expression={expression} result={result} history={history} />
           <Footer handleKeyPress={handleKeyPress} />
         </div>
       </div>
