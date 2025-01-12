@@ -1,7 +1,7 @@
 import React from "react";
 import "./footer.css";
 
-function Footer() {
+function Footer(props) {
   const keys = [
     {
       label: "7",
@@ -49,32 +49,32 @@ function Footer() {
     },
     {
       label: "=",
-      keyCode: 187,
+      keyCode: 13,
     },
   ];
   const symbols = [
     {
-      symbols: "<=",
+      label: "<=",
       value: "backspace",
       keyCode: 8,
     },
     {
-      symbols: "/",
+      label: "/",
       value: "/",
       keyCode: 191,
     },
     {
-      symbols: "x",
+      label: "x",
       value: "*",
       keyCode: 106,
     },
     {
-      symbols: "-",
+      label: "-",
       value: "-",
       keyCode: 189,
     },
     {
-      symbols: "+",
+      label: "+",
       value: "+",
       keyCode: 107,
     },
@@ -84,12 +84,26 @@ function Footer() {
     <div className="footer">
       <div className="keys">
         {keys.map((ele, ind) => {
-          return <p key={ind}>{ele.label}</p>;
+          return (
+            <p
+              key={ind}
+              onClick={() => props.handleKeyPress(ele.keyCode, ele.label)}
+            >
+              {ele.label}
+            </p>
+          );
         })}
       </div>
       <div className="symbols">
         {symbols.map((ele, ind) => {
-          return <p key={ind}>{ele.symbols}</p>;
+          return (
+            <p
+              key={ind}
+              onClick={() => props.handleKeyPress(ele.keyCode, ele.value)}
+            >
+              {ele.label}
+            </p>
+          );
         })}
       </div>
     </div>

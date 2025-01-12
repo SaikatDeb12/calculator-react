@@ -11,14 +11,15 @@
 .keys {
   display: grid;
   align-items: center;
-  width: 100%;
-
   grid-template-columns: auto auto auto;
+  width: 100%;
 }
 
 .symbols {
   display: grid;
   align-items: center;
+  color: var(--bg-color-1);
+  font-size: larger;
 }
 
 .keys p {

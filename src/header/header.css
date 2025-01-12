@@ -17,10 +17,6 @@
 .execution {
   height: 10%;
   padding-right: 10px;
-  /* overflow: auto; */
-}
-
-.execution {
   font-weight: 800;
 }
 
@@ -31,5 +27,5 @@
   height: 30%;
   padding-right: 10px;
   font-size: x-large;
-  font-weight: 500;
+  font-weight: 800;
 }

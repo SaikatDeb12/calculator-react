@@ -18,9 +18,20 @@ function App() {
 
     changeFlag(!flag);
   };
+  const handleKeyPress = (keyCode, key) => {
+    console.log(keyCode, key);
+  };
+
+  const [expression, setExpression] = useState("");
+  const [result, setResult] = useState("");
 
   return (
-    <div className="app" data-theme={flag ? "" : "dark"}>
+    <div
+      className="app"
+      tabIndex={0}
+      data-theme={flag ? "" : "dark"}
+      onKeyDown={(event) => handleKeyPress(event.keyCode, event.key)}
+    >
       <div className="calculator">
         <div className="navbar">
           <div className="slidebar" onClick={changeBtn}>
@@ -32,7 +43,7 @@ function App() {
         </div>
         <div className="main-section">
           <Header />
-          <Footer />
+          <Footer handleKeyPress={handleKeyPress} />
         </div>
       </div>
     </div>
