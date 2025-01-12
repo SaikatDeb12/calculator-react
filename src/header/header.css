@@ -7,11 +7,9 @@
 
 .history {
   height: 60%;
-  /* border: 1px solid green; */
+  line-height: 25px;
   overflow: auto;
-
   width: 100%;
-  padding-right: 10px;
 }
 
 .execution {
