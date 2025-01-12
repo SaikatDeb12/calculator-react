@@ -26,6 +26,7 @@ function App() {
   };
   const [expression, setExpression] = useState("");
   const [result, setResult] = useState("");
+  const [isDecimal, setDecimal] = useState(false);
   const handleKeyPress = (keyCode, key) => {
     if (!keyCode) return;
     if (!usedCodes.includes(keyCode)) return;
@@ -33,18 +34,38 @@ function App() {
       if (key === "0" && expression.length === 0) return;
       setExpression(expression + key);
     } else if (operators.includes(key)) {
+      setDecimal(false);
       if (!expression) return;
       const lstOperator = expression.slice(-1);
       if (operators.includes(lstOperator)) return;
       else if (lstOperator === ".") return;
 
       setExpression(expression + key);
+    } else if (keyCode === 190) {
+      if (!expression) return;
+      if (!isDecimal) {
+        setExpression(expression + ".");
+        setDecimal(true);
+      }
     } else if (keyCode === 8) {
       if (!expression) return;
       else setExpression(expression.slice(0, -1));
     } else if (keyCode === 13) {
       //to calculate the result:
+      console.log(expression);
+      if (!expression) return;
+      calculate(expression);
     }
+  };
+  const calculate = (exp) => {
+    const lstChar = exp.slice(-1);
+    if (!numbers.includes(lstChar)) {
+      exp = exp.slice(0, -1);
+    }
+
+    //and the ans must be string
+    const ans = eval(exp).toFixed(2) + "";
+    setResult(ans);
   };
 
   return (
@@ -64,7 +85,7 @@ function App() {
           </span>
         </div>
         <div className="main-section">
-          <Header expression={expression} />
+          <Header expression={expression} result={result} />
           <Footer handleKeyPress={handleKeyPress} />
         </div>
       </div>

@@ -29,7 +29,7 @@ function Header(props) {
         {/* <p>32+2334+23+123*57678+32+2334+23</p> */}
       </div>
       <div className="result">
-        <p>9999999999999</p>
+        <p>{props.result}</p>
       </div>
     </div>
   );
