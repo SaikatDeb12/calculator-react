@@ -1,7 +1,7 @@
 import React from "react";
 import "./header.css";
 
-function Header() {
+function Header(props) {
   return (
     <div className="header custom-scroll">
       <div className="history ">
@@ -25,7 +25,8 @@ function Header() {
         <p>3+4</p>
       </div>
       <div className="execution">
-        <p>32+2334+23+123*57678+32+2334+23</p>
+        <p>{props.expression}</p>
+        {/* <p>32+2334+23+123*57678+32+2334+23</p> */}
       </div>
       <div className="result">
         <p>9999999999999</p>
