@@ -4,16 +4,16 @@ import "./footer.css";
 function Footer() {
   const keys = [
     {
-      label: "1",
-      keyCode: 49,
+      label: "7",
+      keyCode: 55,
     },
     {
-      label: "2",
-      keyCode: 50,
+      label: "8",
+      keyCode: 56,
     },
     {
-      label: "3",
-      keyCode: 51,
+      label: "9",
+      keyCode: 57,
     },
     {
       label: "4",
@@ -28,16 +28,28 @@ function Footer() {
       keyCode: 54,
     },
     {
-      label: "7",
-      keyCode: 55,
+      label: "1",
+      keyCode: 49,
     },
     {
-      label: "8",
-      keyCode: 56,
+      label: "2",
+      keyCode: 50,
     },
     {
-      label: "9",
-      keyCode: 57,
+      label: "3",
+      keyCode: 51,
+    },
+    {
+      label: "0",
+      keyCode: 48,
+    },
+    {
+      label: ".",
+      keyCode: 190,
+    },
+    {
+      label: "=",
+      keyCode: 187,
     },
   ];
   const symbols = [

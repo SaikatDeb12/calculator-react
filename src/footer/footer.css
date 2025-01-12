@@ -2,5 +2,35 @@
   height: 60%;
   background-color: var(--bg-color-2);
   color: var(--bg-color-3);
+  display: grid;
+  font-size: 20px;
+  grid-template-columns: 4fr 1fr;
+  gap: 10px;
+}
+
+.keys {
+  display: grid;
+  align-items: center;
+  width: 100%;
+
+  grid-template-columns: auto auto auto;
+}
+
+.symbols {
+  display: grid;
+  align-items: center;
+}
+
+.keys p {
   display: flex;
+  justify-content: center;
+  /* border: 1px solid black; */
+}
+
+.symbols p {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
